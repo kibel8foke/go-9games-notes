@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>九游 · 简明指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fce7c8 0%, #f8d5a3 50%, #f3c48e 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      line-height: 1.6;
+      color: #3b2b1a;
+    }
+
+    .card {
+      background: #fffbf5;
+      max-width: 820px;
+      width: 100%;
+      border-radius: 48px 48px 32px 32px;
+      box-shadow: 0 20px 40px -12px rgba(130, 80, 30, 0.25), 0 8px 16px -6px rgba(0,0,0,0.06);
+      padding: 2.8rem 2.8rem 3rem;
+      transition: transform 0.2s ease;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1.2rem 1rem;
+      }
+      .card {
+        padding: 2rem 1.5rem 2.2rem;
+        border-radius: 32px 32px 24px 24px;
+      }
+    }
+
+    .hero-line {
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      color: #b67d4a;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: #402f1c;
+      margin-bottom: 0.3rem;
+      line-height: 1.2;
+    }
+
+    .subhead {
+      font-size: 1.05rem;
+      color: #7a623f;
+      border-left: 4px solid #e6b473;
+      padding-left: 1rem;
+      margin: 1.2rem 0 1.8rem 0;
+      font-style: normal;
+    }
+
+    .intro p {
+      margin-bottom: 1.4rem;
+      font-size: 1.02rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem 1.6rem;
+      margin: 2rem 0 1.6rem;
+    }
+
+    @media (max-width: 540px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+    }
+
+    .feature-item {
+      background: #fdf6ec;
+      padding: 1rem 1.2rem;
+      border-radius: 24px;
+      font-size: 0.96rem;
+      color: #3f2f1c;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      border: 1px solid #f2dfc7;
+      transition: background 0.15s;
+    }
+
+    .feature-item::before {
+      content: "·";
+      font-weight: 700;
+      color: #c78f4f;
+      font-size: 1.4rem;
+      line-height: 1;
+      margin-right: 0.1rem;
+    }
+
+    .scene-note {
+      background: #f8eddd;
+      border-radius: 28px;
+      padding: 1.4rem 1.8rem;
+      margin: 1.8rem 0 1.2rem;
+      font-size: 0.98rem;
+      border-left: 6px solid #dba569;
+    }
+
+    .scene-note strong {
+      color: #6a4d29;
+    }
+
+    .faq-mini {
+      margin: 1.6rem 0 0.8rem;
+      border-top: 2px dashed #e4cfb5;
+      padding-top: 1.6rem;
+    }
+
+    .faq-mini details {
+      margin-bottom: 0.6rem;
+      font-size: 0.96rem;
+      padding: 0.2rem 0;
+    }
+
+    .faq-mini details summary {
+      cursor: pointer;
+      font-weight: 500;
+      color: #4c3821;
+      padding: 0.3rem 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .faq-mini details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-mini details summary::before {
+      content: "▸";
+      display: inline-block;
+      margin-right: 0.6rem;
+      color: #c18d4e;
+      transition: transform 0.2s;
+    }
+
+    .faq-mini details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .faq-mini details p {
+      padding-left: 1.8rem;
+      margin: 0.3rem 0 0.5rem;
+      color: #5c4a33;
+    }
+
+    .gentle-closing {
+      margin-top: 2.2rem;
+      padding: 1.2rem 0 0.2rem;
+      border-top: 1px solid #ebdac7;
+      font-size: 0.98rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+
+    .gentle-closing p {
+      margin: 0;
+    }
+
+    .link-word {
+      display: inline-block;
+      background: #e7cfb0;
+      color: #2f2416;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.15rem 0.9rem;
+      border-radius: 40px;
+      border: 1px solid #dbb991;
+      transition: background 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+
+    .link-word:hover {
+      background: #ddbe95;
+      box-shadow: 0 2px 6px rgba(160, 110, 50, 0.15);
+    }
+
+    .link-word:active {
+      background: #cfa87a;
+    }
+
+    .small-footnote {
+      font-size: 0.82rem;
+      color: #8f795c;
+      margin-top: 1.8rem;
+      text-align: center;
+      opacity: 0.75;
+    }
+
+    a {
+      color: #654321;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-color: #cfaa7a;
+    }
+
+    a:hover {
+      text-decoration-color: #402f1c;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="hero-line">⏺ 简短梳理</div>
+    <h1>日常使用 <br class="mobile-break">与访问提醒</h1>
+    <div class="subhead">一个温和的说明页 · 关于九游平台的基础认识</div>
+
+    <div class="intro">
+      <p>如果你刚刚接触到这个叫九游的服务，或者已经使用过一段时间但想理清一些基本细节，这篇内容会帮你快速建立整体印象。下面从最直接的角度出发，整理了一份简明指南，方便你按需查阅。</p>
+      <p>九游是一个以游戏内容为核心的综合平台，聚合了多种类型的游戏资源、社区互动和实用工具。无论你是寻找新游戏、查看攻略，还是参与讨论，它都提供了一处相对集中的信息入口。不过平台的功能和界面会随时间调整，下面列举的特点和提示基于当前常见形态。</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-item">游戏库覆盖较广，包含手游、页游及部分端游索引</div>
+      <div class="feature-item">社区板块按游戏分区，方便查找特定话题</div>
+      <div class="feature-item">提供礼包码、新手引导等辅助内容（注意时效）</div>
+      <div class="feature-item">支持账号绑定与多端同步（部分功能需注册）</div>
+    </div>
+
+    <div class="scene-note">
+      <strong>🧭 访问提醒</strong><br>
+      建议通过官方渠道进入，核对网址后再进行登录或信息填写。如果遇到页面加载异常或活动规则变动，以平台内最新公告为准。另外，部分社区内容由用户生成，浏览时留意信息发布的日期和来源。
+    </div>
+
+    <div class="faq-mini">
+      <details>
+        <summary>九游主要适合哪些场景？</summary>
+        <p>日常查攻略、找游戏折扣、参与玩家讨论，或者领取限时福利（注意活动截止时间）。对于希望集中管理多个游戏账号的用户，它的绑定功能也提供了一定便利。</p>
+      </details>
+      <details>
+        <summary>使用前需要注册吗？</summary>
+        <p>浏览游戏库和部分公共内容无需注册；但下载资源、参与社区互动或使用个人收藏功能，通常需要创建账号。注册流程简单，按页面指引即可完成。</p>
+      </details>
+      <details>
+        <summary>内容是否完全免费？</summary>
+        <p>平台本身免费使用，但游戏内购、部分增值服务或特定礼包可能涉及付费。具体以游戏或服务页面的说明为准。</p>
+      </details>
+    </div>
+
+    <div class="gentle-closing">
+      <p>如果你觉得需要更详细的指引，可以直接前往 <a href="https://go-9games.com.cn" class="link-word">九游</a> 浏览当前版本。</p>
+      <p style="font-size:0.9rem; color:#7a623f;">保持简单，按需取用。</p>
+    </div>
+
+    <div class="small-footnote">
+      ⏺ 本页仅为概述，功能细节以实际页面为准。
+    </div>
+  </div>
+</body>
+</html>
